@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    {% for i in owner %}
+        
+        <article class="media content-section">
+            <div class="media-body">
+              <div class="article-metadata">
+                <a class="mr-2" href="#"><h1>{{i.name}}</h1></a>
+                <small class="text-muted">{{i.phone}}</small>
+              </div>
+              <h2><a class="article-title" href="#">{{i.gmail}}</a></h2>
+              <p class="article-content">{{i.address}}</p>
+            </div>
+          </article>
+
+    {% endfor %}
+{% endblock content %}
