@@ -1,28 +1,30 @@
 from django.shortcuts import render
 
-from django.http import HttpResponse
+from .models import Posts
 
-owner = [
+posts = [
     {
-        'name' : 'Bibek',
-        'phone' : 9810258171,
-        'gmail' : 'bhattaraibibek91@gmail.com',
-        'address' : 'balkumari, Lalitpur'
+        'author': 'CoreyMS',
+        'title': 'Blog Post 1',
+        'content': 'First post content',
+        'date_posted': 'August 27, 2018'
     },
     {
-        'name' : 'Bhattarai',
-        'phone' : 9819213927,
-        'gmail' : 'leomessi161743@gmail.com',
-        'address' : 'piluwa, Bara'
+        'author': 'Jane Doe',
+        'title': 'Blog Post 2',
+        'content': 'Second post content',
+        'date_posted': 'August 28, 2018'
     }
 ]
 
-def index(request):
-    data = {
-        'owner' : owner,
-        'title' : 'django'
+
+def home(request):
+    context = {
+        # 'posts' = posts
+        'posts': Posts.objects.all(),
+        'title' : 'Django'
     }
-    return render(request, 'blog/home.html', data)
+    return render(request, 'blog/home.html', context)
 
 def about(request):
     return render(request, 'blog/about.html')
